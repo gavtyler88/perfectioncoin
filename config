@@ -1,0 +1,7 @@
+[main]
+host = https://www.transifex.com
+
+[perfectioncoin.qt-translation-016x]
+file_filter = src/qt/locale/perfectioncoin_<lang>.ts
+source_file = src/qt/locale/perfectioncoin_en.ts
+source_lang = en
