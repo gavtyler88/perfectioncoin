@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name= perfectioncoin
+Comment=Connect to the perfectioncoin P2P Network
+Comment[de]=Verbinde mit dem perfectioncoin peer-to-peer Netzwerk
+Comment[fr]=perfectioncoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=perfectioncoin, eşten eşe kriptografik sanal para birimi
+Exec=perfectioncoin-qt %u
+Terminal=false
+Type=Application
+Icon=perfectioncoin128
+MimeType=x-scheme-handler/perfectioncoin;
+Categories=Office;Finance;P2P;Network;Qt;
+StartupWMClass=perfectioncoin-qt
