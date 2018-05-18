@@ -50,14 +50,14 @@ dnl Initialize qt input.
 dnl This must be called before any other PERFECTIONCOIN_QT* macros to ensure that
 dnl input variables are set correctly.
 dnl CAUTION: Do not use this inside of a conditional.
-AC_DEFUN([BITCOIN_QT_INIT],[
+AC_DEFUN([PERFECTIONCOIN_QT_INIT],[
   dnl enable qt support
   AC_ARG_WITH([gui],
     [AS_HELP_STRING([--with-gui@<:@=no|qt4|qt5|auto@:>@],
     [build perfectioncoin-qt GUI (default=auto, qt5 tried first)])],
     [
      perfectioncoin_qt_want_version=$withval
-     if test "x$bitcoin_qt_want_version" = xyes; then
+     if test "x$perfectioncoin_qt_want_version" = xyes; then
        perfectioncoin_qt_force=yes
        perfectioncoin_qt_want_version=auto
      fi
@@ -115,7 +115,7 @@ AC_DEFUN([PERFECTIONCOIN_QT_CONFIGURE],[
   CXXFLAGS="$PIC_FLAGS $CXXFLAGS"
   if test "x$perfectioncoin_qt_got_major_vers" = x5; then
     _PERFECTIONCOIN_QT_IS_STATIC
-    if test "x$bitcoin_cv_static_qt" = xyes; then
+    if test "x$perfectioncoin_cv_static_qt" = xyes; then
       _PERFECTIONCOIN_QT_FIND_STATIC_PLUGINS
       AC_DEFINE(QT_STATICPLUGIN, 1, [Define this symbol if qt plugins are static])
       AC_CACHE_CHECK(for Qt < 5.4, perfectioncoin_cv_need_acc_widget,[
@@ -260,7 +260,7 @@ AC_DEFUN([PERFECTIONCOIN_QT_CONFIGURE],[
       AC_MSG_WARN([lupdate is required to update qt translations])
     fi
   ],[
-    bitcoin_enable_qt=no
+    perfectioncoin_enable_qt=no
   ])
   AC_MSG_RESULT([$perfectioncoin_enable_qt (Qt${perfectioncoin_qt_got_major_vers})])
 
@@ -384,8 +384,8 @@ AC_DEFUN([_PERFECTIONCOIN_QT_FIND_STATIC_PLUGINS],[
                choke
                #endif
              ]])],
-           [bitcoin_cv_need_platformsupport=yes],
-           [bitcoin_cv_need_platformsupport=no])
+           [perfectioncoin_cv_need_platformsupport=yes],
+           [perfectioncoin_cv_need_platformsupport=no])
          ])
          if test "x$perfectioncoin_cv_need_platformsupport" = xyes; then
            PERFECTIONCOIN_QT_CHECK(AC_CHECK_LIB([${QT_LIB_PREFIX}PlatformSupport],[main],,PERFECTIONCOIN_QT_FAIL(lib${QT_LIB_PREFIX}PlatformSupport not found)))
@@ -424,14 +424,14 @@ AC_DEFUN([_PERFECTIONCOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
     qt5_modules="Qt5Core Qt5Gui Qt5Network Qt5Widgets"
     qt4_modules="QtCore QtGui QtNetwork"
     BITCOIN_QT_CHECK([
-      if test "x$bitcoin_qt_want_version" = xqt5 || ( test "x$bitcoin_qt_want_version" = xauto && test "x$auto_priority_version" = xqt5 ); then
+      if test "x$perfectioncoin_qt_want_version" = xqt5 || ( test "x$perfectioncoin_qt_want_version" = xauto && test "x$auto_priority_version" = xqt5 ); then
         PKG_CHECK_MODULES([QT5], [$qt5_modules], [QT_INCLUDES="$QT5_CFLAGS"; QT_LIBS="$QT5_LIBS" have_qt=yes],[have_qt=no])
-      elif test "x$bitcoin_qt_want_version" = xqt4 || ( test "x$bitcoin_qt_want_version" = xauto && test "x$auto_priority_version" = xqt4 ); then
+      elif test "x$perfectioncoin_qt_want_version" = xqt4 || ( test "x$perfectioncoin_qt_want_version" = xauto && test "x$auto_priority_version" = xqt4 ); then
         PKG_CHECK_MODULES([QT4], [$qt4_modules], [QT_INCLUDES="$QT4_CFLAGS"; QT_LIBS="$QT4_LIBS" ; have_qt=yes], [have_qt=no])
       fi
 
       dnl qt version is set to 'auto' and the preferred version wasn't found. Now try the other.
-      if test "x$have_qt" = xno && test "x$bitcoin_qt_want_version" = xauto; then
+      if test "x$have_qt" = xno && test "x$perfectioncoin_qt_want_version" = xauto; then
         if test "x$auto_priority_version" = xqt5; then
           PKG_CHECK_MODULES([QT4], [$qt4_modules], [QT_INCLUDES="$QT4_CFLAGS"; QT_LIBS="$QT4_LIBS" ; have_qt=yes; QT_LIB_PREFIX=Qt; perfectioncoin_qt_got_major_vers=4], [have_qt=no])
         else
@@ -455,7 +455,7 @@ AC_DEFUN([_PERFECTIONCOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
 
 dnl Internal. Find Qt libraries without using pkg-config. Version is deduced
 dnl from the discovered headers.
-dnl Inputs: bitcoin_qt_want_version (from --with-gui=). The version to use.
+dnl Inputs: perfectioncoin_qt_want_version (from --with-gui=). The version to use.
 dnl         If "auto", the version will be discovered by _PERFECTIONCOIN_QT_CHECK_QT5.
 dnl Outputs: All necessary QT_* variables are set.
 dnl Outputs: perfectioncoin_qt_got_major_vers is set to "4" or "5".
@@ -480,7 +480,7 @@ AC_DEFUN([_PERFECTIONCOIN_QT_FIND_LIBS_WITHOUT_PKGCONFIG],[
     if test "x$bitcoin_qt_want_version" = xauto; then
       _PERFECTIONCOIN_QT_CHECK_QT5
     fi
-    if test "x$bitcoin_cv_qt5" = xyes || test "x$perfectioncoin_qt_want_version" = xqt5; then
+    if test "x$perfectioncoin_cv_qt5" = xyes || test "x$perfectioncoin_qt_want_version" = xqt5; then
       QT_LIB_PREFIX=Qt5
       perfectioncoin_qt_got_major_vers=5
     else
