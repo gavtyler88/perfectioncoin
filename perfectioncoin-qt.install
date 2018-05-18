@@ -1,0 +1,6 @@
+usr/local/bin/perfectioncoin-qt usr/bin
+share/pixmaps/perfectioncoin32.xpm usr/share/pixmaps
+share/pixmaps/perfection16.xpm usr/share/pixmaps
+share/pixmaps/perfectioncoin128.png usr/share/pixmaps
+debian/perfectioncoin-qt.desktop usr/share/applications
+debian/perfectioncoin-qt.protocol usr/share/kde4/services/
