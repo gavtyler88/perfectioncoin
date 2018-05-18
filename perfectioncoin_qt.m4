@@ -17,7 +17,7 @@ AC_DEFUN([PERFECTIONCOIN_QT_FAIL],[
 ])
 
 AC_DEFUN([PERFECTIONCOIN_QT_CHECK],[
-  if test "x$bitcoin_enable_qt" != xno && test "x$perfectioncoin_qt_want_version" != xno; then
+  if test "x$perfectioncoin_enable_qt" != xno && test "x$perfectioncoin_qt_want_version" != xno; then
     true
     $1
   else
