@@ -1,0 +1,33 @@
+# /etc/conf.d/perfectioncoind: config file for /etc/init.d/perfectioncoind
+
+# Config file location
+#PERFECTIONCOIND_CONFIGFILE="/etc/perfectioncoin/perfectioncoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $PERFECTIONCOIND_USER)
+#PERFECTIONCOIND_PIDDIR="/var/run/perfectioncoind"
+
+# What filename to give the pidfile
+#PERFECTIONCOIND_PIDFILE="${PERFECTIONCOIND_PIDDIR}/perfectioncoind.pid"
+
+# Where to write perfectioncoind data (be mindful that the blockchain is large)
+#PERFECTIONCOIND_DATADIR="/var/lib/perfectioncoind"
+
+# User and group to own perfectioncoind process
+#PERFECTIONCOIND_USER="perfectioncoin"
+#PERFECTIONCOIND_GROUP="perfectioncoin"
+
+# Path to perfectioncoind executable
+#PERFECTIONCOIND_BIN="/usr/bin/perfectioncoind"
+
+# Nice value to run perfectioncoind under
+#PERFECTIONCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#PERFECTIONCOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for perfectioncoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+PERFECTIONCOIND_SIGTERM_TIMEOUT=60
