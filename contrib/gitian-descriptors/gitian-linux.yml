@@ -28,7 +28,7 @@ packages:
 - "ca-certificates"
 - "python"
 remotes:
-- "url": "https://github.com/perfectioncoin/gavtyler88/perfectioncoin/gavtyler88.git"
+- "url": "https://github.com/gavtyler88/perfectioncoin/gavtyler88/perfectioncoin/.git"
   "dir": "perfectioncoin"
 files: []
 script: |
