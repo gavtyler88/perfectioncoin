@@ -7,7 +7,7 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/perfectioncoin/gavtyler88/perfectioncoin/gavtyler88-detached-sigs.git"
+- "url": "https://github.com/gavtyler88/perfectioncoin/gavtyler88/perfectioncoin-detached-sigs.git"
   "dir": "signature"
 files:
 - "perfectioncoin-osx-unsigned.tar.gz"
