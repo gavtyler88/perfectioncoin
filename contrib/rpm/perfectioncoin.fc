@@ -1,0 +1,8 @@
+/usr/bin/perfectioncoin-cli		--	gen_context(system_u:object_r:perfectioncoin_exec_t,s0)
+/usr/sbin/perfectioncoind		--	gen_context(system_u:object_r:perfectioncoin_exec_t,s0)
+/usr/lib(64)?/perfectioncoin/perfectioncoind		--	gen_context(system_u:object_r:perfectioncoin_exec_t,s0)
+
+/etc/perfectioncoin(/.*)?		gen_context(system_u:object_r:perfectioncoin_conf_t,s0)
+/var/lib/perfectioncoin(/.*)?		gen_context(system_u:object_r:perfectioncoin_var_lib_t,s0)
+
+(/var)?/run/perfectioncoind(/.*)?   gen_context(system_u:object_r:perfectioncoin_var_run_t,s0)
