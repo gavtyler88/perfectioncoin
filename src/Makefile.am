@@ -34,13 +34,13 @@ LIBBITCOINQT=qt/libbitcoinqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBBITCOIN_ZMQ=libbitcoin_zmq.a
+LIBPERFECTIONCOIN_ZMQ=libbitcoin_zmq.a
 endif
-if BUILD_BITCOIN_LIBS
-LIBBITCOINCONSENSUS=libbitcoinconsensus.la
+if BUILD_PERFECTIONCOIN_LIBS
+LIBPERFECTIONCOINCONSENSUS=libbitcoinconsensus.la
 endif
 if ENABLE_WALLET
-LIBBITCOIN_WALLET=libbitcoin_wallet.a
+LIBPERFECTIONCOIN_WALLET=libbitcoin_wallet.a
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
@@ -49,33 +49,33 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*) $(wildcard secp256k1/include/*)
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBBITCOIN_CRYPTO) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_SERVER) \
-  $(LIBBITCOIN_CLI) \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_ZMQ)
+  $(LIBPERFECTIONCOIN_CRYPTO) \
+  $(LIBPERFECTIONCOIN_UTIL) \
+  $(LIBPERFECTIONCOIN_COMMON) \
+  $(LIBPERFECTIONCOIN_CONSENSUS) \
+  $(LIBPERFECTIONCOIN_SERVER) \
+  $(LIBPERFECTIONCOIN_CLI) \
+  $(LIBPERFECTIONCOIN_WALLET) \
+  $(LIBPERFECTIONCOIN_ZMQ)
 
-lib_LTLIBRARIES = $(LIBBITCOINCONSENSUS)
+lib_LTLIBRARIES = $(LIBPERFECTIONCOINCONSENSUS)
 
 bin_PROGRAMS =
 noinst_PROGRAMS =
 TESTS =
 BENCHMARKS =
 
-if BUILD_BITCOIND
-  bin_PROGRAMS += bitcoind
+if BUILD_PERFECTIONCOIND
+  bin_PROGRAMS += perfectioncoind
 endif
 
-if BUILD_BITCOIN_UTILS
-  bin_PROGRAMS += bitcoin-cli bitcoin-tx
+if BUILD_PERFECTIONCOIN_UTILS
+  bin_PROGRAMS += perfectioncoin-cli perfectioncoin-tx
 endif
 
 .PHONY: FORCE check-symbols check-security
-# bitcoin core #
-BITCOIN_CORE_H = \
+# perfectioncoin core #
+PERFECTIONCOIN_CORE_H = \
   addrdb.h \
   addrman.h \
   base58.h \
@@ -192,9 +192,9 @@ obj/build.h: FORCE
 libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # server: shared between bitcoind and bitcoin-qt
-libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
-libbitcoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_server_a_SOURCES = \
+libperfectioncoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(PERFECTIONCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
+libperfectioncoin_server_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libperfectioncoin_server_a_SOURCES = \
   addrdb.cpp \
   addrman.cpp \
   bloom.cpp \
@@ -232,23 +232,23 @@ libbitcoin_server_a_SOURCES = \
   validation.cpp \
   validationinterface.cpp \
   versionbits.cpp \
-  $(BITCOIN_CORE_H)
+  $(PERFECTIONCOIN_CORE_H)
 
 if ENABLE_ZMQ
-libbitcoin_zmq_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(ZMQ_CFLAGS)
-libbitcoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_zmq_a_SOURCES = \
+libperfectioncoin_zmq_a_CPPFLAGS = $(PERFECTIONCOIN_INCLUDES) $(ZMQ_CFLAGS)
+libperfectioncoin_zmq_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libperfectioncoin_zmq_a_SOURCES = \
   zmq/zmqabstractnotifier.cpp \
   zmq/zmqnotificationinterface.cpp \
   zmq/zmqpublishnotifier.cpp
 endif
 
 
-# wallet: shared between bitcoind and bitcoin-qt, but only linked
+# wallet: shared between perfectioncoind and perfectioncoin-qt, but only linked
 # when wallet enabled
-libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_wallet_a_SOURCES = \
+libperfectioncoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+libperfectioncoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libperfectioncoin_wallet_a_SOURCES = \
   interfaces/wallet.cpp \
   wallet/crypter.cpp \
   wallet/db.cpp \
@@ -261,12 +261,12 @@ libbitcoin_wallet_a_SOURCES = \
   wallet/walletdb.cpp \
   wallet/walletutil.cpp \
   wallet/coinselection.cpp \
-  $(BITCOIN_CORE_H)
+  $(PERFECTIONCOIN_CORE_H)
 
 # crypto primitives library
-crypto_libbitcoin_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
-crypto_libbitcoin_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-crypto_libbitcoin_crypto_a_SOURCES = \
+crypto_libperfectioncoin_crypto_a_CPPFLAGS = $(AM_CPPFLAGS)
+crypto_libperfectioncoin_crypto_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+crypto_libperfectioncoin_crypto_a_SOURCES = \
   crypto/aes.cpp \
   crypto/aes.h \
   crypto/chacha20.h \
@@ -286,13 +286,13 @@ crypto_libbitcoin_crypto_a_SOURCES = \
   crypto/sha512.h
 
 if USE_ASM
-crypto_libbitcoin_crypto_a_SOURCES += crypto/sha256_sse4.cpp
+crypto_libperfectioncoin_crypto_a_SOURCES += crypto/sha256_sse4.cpp
 endif
 
 # consensus: shared between all executables that validate any consensus rules.
-libbitcoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitcoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_consensus_a_SOURCES = \
+libperfectioncoin_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(PERFECTIONCOIN_INCLUDES)
+libperfectioncoin_consensus_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libperfectioncoin_consensus_a_SOURCES = \
   amount.h \
   arith_uint256.cpp \
   arith_uint256.h \
@@ -309,7 +309,7 @@ libbitcoin_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/bitcoinconsensus.cpp \
+  script/perfectioncoinconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -325,10 +325,10 @@ libbitcoin_consensus_a_SOURCES = \
   utilstrencodings.h \
   version.h
 
-# common: shared between bitcoind, and bitcoin-qt and non-server tools
-libbitcoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitcoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_common_a_SOURCES = \
+# common: shared between perfectioncoind, and perfectioncoin-qt and non-server tools
+libperfectioncoin_common_a_CPPFLAGS = $(AM_CPPFLAGS) $(PERFECTIONCOIN_INCLUDES)
+libperfectioncoin_common_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libperfectioncoin_common_a_SOURCES = \
   base58.cpp \
   bech32.cpp \
   chainparams.cpp \
@@ -348,14 +348,14 @@ libbitcoin_common_a_SOURCES = \
   script/sign.cpp \
   script/standard.cpp \
   warnings.cpp \
-  $(BITCOIN_CORE_H)
+  $(PERFECTIONCOIN_CORE_H)
 
 # util: shared between all executables.
 # This library *must* be included to make sure that the glibc
 # backward-compatibility objects and their sanity checks are linked.
-libbitcoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitcoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_util_a_SOURCES = \
+libperfectioncoin_util_a_CPPFLAGS = $(AM_CPPFLAGS) $(PERFECTIONCOIN_INCLUDES)
+libperfectioncoin_util_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libperfectioncoin_util_a_SOURCES = \
   support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
@@ -376,83 +376,83 @@ libbitcoin_util_a_SOURCES = \
   utilmoneystr.cpp \
   utilstrencodings.cpp \
   utiltime.cpp \
-  $(BITCOIN_CORE_H)
+  $(PERFECTIONCOIN_CORE_H)
 
 if GLIBC_BACK_COMPAT
-libbitcoin_util_a_SOURCES += compat/glibc_compat.cpp
+libperfectioncoin_util_a_SOURCES += compat/glibc_compat.cpp
 endif
 
-# cli: shared between bitcoin-cli and bitcoin-qt
-libbitcoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-libbitcoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-libbitcoin_cli_a_SOURCES = \
+# cli: shared between perfectioncoin-cli and bitcoin-qt
+libperfectioncoin_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(PERFECTIONCOIN_INCLUDES)
+libperfectioncoin_cli_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+libperfectioncoin_cli_a_SOURCES = \
   rpc/client.cpp \
-  $(BITCOIN_CORE_H)
+  $(PERFECTIONCOIN_CORE_H)
 
-nodist_libbitcoin_util_a_SOURCES = $(srcdir)/obj/build.h
+nodist_libperfectioncoin_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
-# bitcoind binary #
-bitcoind_SOURCES = bitcoind.cpp
-bitcoind_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-bitcoind_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitcoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# perfectioncoind binary #
+perfectioncoind_SOURCES = perfectioncoind.cpp
+perfectioncoind_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
+perfectioncoind_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+perfectioncoind_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-bitcoind_SOURCES += bitcoind-res.rc
+perfectioncoind_SOURCES += perfectioncoind-res.rc
 endif
 
-bitcoind_LDADD = \
-  $(LIBBITCOIN_SERVER) \
-  $(LIBBITCOIN_WALLET) \
-  $(LIBBITCOIN_COMMON) \
+perfectioncoind_LDADD = \
+  $(LIBPERFECTIONCOIN_SERVER) \
+  $(LIBPERFECTIONCOIN_WALLET) \
+  $(LIBPERFECTIONCOIN_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_ZMQ) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBPERFECTIONCOIN_UTIL) \
+  $(LIBPERFECTIONCOIN_ZMQ) \
+  $(LIBPERFECTIONCOIN_CONSENSUS) \
+  $(LIBPERFECTIONCOIN_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
   $(LIBSECP256K1)
 
-bitcoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
+perfectioncoind_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 
-# bitcoin-cli binary #
-bitcoin_cli_SOURCES = bitcoin-cli.cpp
-bitcoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-bitcoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitcoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# perfectioncoin-cli binary #
+perfectioncoin_cli_SOURCES = perfectioncoin-cli.cpp
+perfectioncoin_cli_CPPFLAGS = $(AM_CPPFLAGS) $(PERFECTIONCOIN_INCLUDES) $(EVENT_CFLAGS)
+perfectioncoin_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+perfectioncoin_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-bitcoin_cli_SOURCES += bitcoin-cli-res.rc
+perfectioncoin_cli_SOURCES += perfectioncoin-cli-res.rc
 endif
 
-bitcoin_cli_LDADD = \
-  $(LIBBITCOIN_CLI) \
+perfectioncoin_cli_LDADD = \
+  $(LIBPERFECTIONCOIN_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_CRYPTO)
+  $(LIBPERFECTIONCOIN_UTIL) \
+  $(LIBPERFECTIONCOIN_CRYPTO)
 
-bitcoin_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
+perfectioncoin_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 #
 
-# bitcoin-tx binary #
-bitcoin_tx_SOURCES = bitcoin-tx.cpp
-bitcoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-bitcoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-bitcoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+# perfectioncoin-tx binary #
+perfectioncoin_tx_SOURCES = bitcoin-tx.cpp
+perfectioncoin_tx_CPPFLAGS = $(AM_CPPFLAGS) $(PERFECTIONCOIN_INCLUDES)
+perfectioncoin_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+perfectioncoin_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-bitcoin_tx_SOURCES += bitcoin-tx-res.rc
+perfectioncoin_tx_SOURCES += perfectioncoin-tx-res.rc
 endif
 
-bitcoin_tx_LDADD = \
+perfectioncoin_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBBITCOIN_COMMON) \
-  $(LIBBITCOIN_UTIL) \
-  $(LIBBITCOIN_CONSENSUS) \
-  $(LIBBITCOIN_CRYPTO) \
+  $(LIBPERFECTIONCOIN_COMMON) \
+  $(LIBPERFECTIONCOIN_UTIL) \
+  $(LIBPERFECTIONCOIN_CONSENSUS) \
+  $(LIBPERFECTIONCOIN_CRYPTO) \
   $(LIBSECP256K1)
 
 perfectioncoin_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
