@@ -26,8 +26,8 @@ Build-Depends: debhelper,
  python,
  libzmq3-dev
 Standards-Version: 3.9.2
-Vcs-Git: git://github.com/gavtyler88/perfectioncoin/gavtyler88/perfectioncoin.git
-Vcs-Browser: https://github.com/gavtyler88/perfectioncoin/gavtyler88/perfectioncoin
+Vcs-Git: git://github.com/gavtyler88/perfectioncoin.git
+Vcs-Browser: https://github.com/gavtyler88/perfectioncoin
 
 Package: perfectioncoind
 Architecture: any
