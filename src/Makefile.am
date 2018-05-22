@@ -1,6 +1,6 @@
-# Copyright (c) 2013-2016 The Bitcoin Core developers
-# Distributed under the MIT software license, see the accompanying
-# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+# The PerfectionCoin Core Developers
+# 
+# 
 
 DIST_SUBDIRS = secp256k1 univalue
 
@@ -19,22 +19,22 @@ else
 LIBUNIVALUE = $(UNIVALUE_LIBS)
 endif
 
-BITCOIN_INCLUDES=-I$(builddir) $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
+PERFECTIONCOIN_INCLUDES=-I$(builddir) $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFLAGS) $(CRYPTO_CFLAGS) $(SSL_CFLAGS)
 
-BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
-BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
+PERFECTIONCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
+PERFECTIONCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBBITCOIN_SERVER=libbitcoin_server.a
-LIBBITCOIN_COMMON=libbitcoin_common.a
-LIBBITCOIN_CONSENSUS=libbitcoin_consensus.a
-LIBBITCOIN_CLI=libbitcoin_cli.a
-LIBBITCOIN_UTIL=libbitcoin_util.a
-LIBBITCOIN_CRYPTO=crypto/libbitcoin_crypto.a
-LIBBITCOINQT=qt/libbitcoinqt.a
+LIBPERFECTIONCOIN_SERVER=libperfectioncoin_server.a
+LIBPERFECTIONCOIN_COMMON=libperfectioncoin_common.a
+LIBPERFECTIONCOIN_CONSENSUS=libperfectioncoin_consensus.a
+LIBPERFECTIONCOIN_CLI=libperfectioncoin_cli.a
+LIBPERFECTIONCOIN_UTIL=libperfectioncoin_util.a
+LIBPERFECTIONCOIN_CRYPTO=crypto/libperfectioncoin_crypto.a
+LIBPERFECTIONCOINQT=qt/libperfectioncoinqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
 
 if ENABLE_ZMQ
-LIBPERFECTIONCOIN_ZMQ=libbitcoin_zmq.a
+LIBPERFECTIONCOIN_ZMQ=libperfectioncoin_zmq.a
 endif
 if BUILD_PERFECTIONCOIN_LIBS
 LIBPERFECTIONCOINCONSENSUS=libbitcoinconsensus.la
