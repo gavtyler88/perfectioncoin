@@ -1,4 +1,4 @@
-// The Bitcoin Core developers
+// The PerfectionCoin developers
 // file COPYING 
 
 #include <bench/bench.h>
