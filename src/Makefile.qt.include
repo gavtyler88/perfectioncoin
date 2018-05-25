@@ -39,60 +39,60 @@ QT_TS = \
   qt/locale/bitcoin_eu_ES.ts \
   qt/locale/bitcoin_fa_IR.ts \
   qt/locale/bitcoin_fa.ts \
-  qt/locale/bitcoin_fi.ts \
-  qt/locale/bitcoin_fr_CA.ts \
-  qt/locale/bitcoin_fr_FR.ts \
-  qt/locale/bitcoin_fr.ts \
-  qt/locale/bitcoin_gl.ts \
-  qt/locale/bitcoin_he.ts \
-  qt/locale/bitcoin_hi_IN.ts \
-  qt/locale/bitcoin_hr.ts \
-  qt/locale/bitcoin_hu.ts \
-  qt/locale/bitcoin_id_ID.ts \
-  qt/locale/bitcoin_it_IT.ts \
-  qt/locale/bitcoin_it.ts \
-  qt/locale/bitcoin_ja.ts \
-  qt/locale/bitcoin_ka.ts \
-  qt/locale/bitcoin_kk_KZ.ts \
-  qt/locale/bitcoin_ko_KR.ts \
-  qt/locale/bitcoin_ku_IQ.ts \
-  qt/locale/bitcoin_ky.ts \
-  qt/locale/bitcoin_la.ts \
-  qt/locale/bitcoin_lt.ts \
-  qt/locale/bitcoin_lv_LV.ts \
-  qt/locale/bitcoin_mk_MK.ts \
-  qt/locale/bitcoin_mn.ts \
-  qt/locale/bitcoin_ms_MY.ts \
-  qt/locale/bitcoin_nb.ts \
-  qt/locale/bitcoin_ne.ts \
-  qt/locale/bitcoin_nl.ts \
-  qt/locale/bitcoin_pam.ts \
-  qt/locale/bitcoin_pl.ts \
-  qt/locale/bitcoin_pt_BR.ts \
-  qt/locale/bitcoin_pt_PT.ts \
-  qt/locale/bitcoin_ro_RO.ts \
-  qt/locale/bitcoin_ro.ts \
-  qt/locale/bitcoin_ru_RU.ts \
-  qt/locale/bitcoin_ru.ts \
-  qt/locale/bitcoin_sk.ts \
-  qt/locale/bitcoin_sl_SI.ts \
-  qt/locale/bitcoin_sq.ts \
-  qt/locale/bitcoin_sr@latin.ts \
-  qt/locale/bitcoin_sr.ts \
-  qt/locale/bitcoin_sv.ts \
-  qt/locale/bitcoin_ta.ts \
-  qt/locale/bitcoin_th_TH.ts \
-  qt/locale/bitcoin_tr_TR.ts \
-  qt/locale/bitcoin_tr.ts \
-  qt/locale/bitcoin_uk.ts \
-  qt/locale/bitcoin_ur_PK.ts \
-  qt/locale/bitcoin_uz@Cyrl.ts \
-  qt/locale/bitcoin_vi.ts \
-  qt/locale/bitcoin_vi_VN.ts \
-  qt/locale/bitcoin_zh_CN.ts \
-  qt/locale/bitcoin_zh_HK.ts \
-  qt/locale/bitcoin_zh.ts \
-  qt/locale/bitcoin_zh_TW.ts
+  qt/locale/perfectioncoin_fi.ts \
+  qt/locale/perfectioncoin_fr_CA.ts \
+  qt/locale/perfectioncoin_fr_FR.ts \
+  qt/locale/perfectioncoin_fr.ts \
+  qt/locale/perfectioncoin_gl.ts \
+  qt/locale/perfectioncoin_he.ts \
+  qt/locale/perfectioncoin_hi_IN.ts \
+  qt/locale/perfectioncoin_hr.ts \
+  qt/locale/perfectioncoin_hu.ts \
+  qt/locale/perfectioncoin_id_ID.ts \
+  qt/locale/perfectioncoin_it_IT.ts \
+  qt/locale/perfectioncoin_it.ts \
+  qt/locale/perfectioncoin_ja.ts \
+  qt/locale/perfectioncoin_ka.ts \
+  qt/locale/perfectioncoin_kk_KZ.ts \
+  qt/locale/perfectioncoin_ko_KR.ts \
+  qt/locale/perfectioncoin_ku_IQ.ts \
+  qt/locale/perfectioncoin_ky.ts \
+  qt/locale/perfectioncoin_la.ts \
+  qt/locale/perfectioncoin_lt.ts \
+  qt/locale/perfectioncoin_lv_LV.ts \
+  qt/locale/perfectioncoin_mk_MK.ts \
+  qt/locale/perfectioncoin_mn.ts \
+  qt/locale/perfectioncoin_ms_MY.ts \
+  qt/locale/perfectioncoin_nb.ts \
+  qt/locale/perfectioncoin_ne.ts \
+  qt/locale/perfectioncoin_nl.ts \
+  qt/locale/perfectioncoin_pam.ts \
+  qt/locale/perfectioncoin_pl.ts \
+  qt/locale/perfectioncoin_pt_BR.ts \
+  qt/locale/perfectioncoin_pt_PT.ts \
+  qt/locale/perfectioncoin_ro_RO.ts \
+  qt/locale/perfectioncoin_ro.ts \
+  qt/locale/perfectioncoin_ru_RU.ts \
+  qt/locale/perfectioncoin_ru.ts \
+  qt/locale/perfectioncoin_sk.ts \
+  qt/locale/perfectioncoin_sl_SI.ts \
+  qt/locale/perfectioncoin_sq.ts \
+  qt/locale/perfectioncoin_sr@latin.ts \
+  qt/locale/perfectioncoin_sr.ts \
+  qt/locale/perfectioncoin_sv.ts \
+  qt/locale/perfectioncoin_ta.ts \
+  qt/locale/perfectioncoin_th_TH.ts \
+  qt/locale/perfectioncoin_tr_TR.ts \
+  qt/locale/perfectioncoin_tr.ts \
+  qt/locale/perfectioncoin_uk.ts \
+  qt/locale/perfectioncoin_ur_PK.ts \
+  qt/locale/perfectioncoin_uz@Cyrl.ts \
+  qt/locale/perfectioncoin_vi.ts \
+  qt/locale/perfectioncoin_vi_VN.ts \
+  qt/locale/perfectioncoin_zh_CN.ts \
+  qt/locale/perfectoncoin_zh_HK.ts \
+  qt/locale/perfectioncoin_zh.ts \
+  qt/locale/perfectioncoin_zh_TW.ts
 
 QT_FORMS_UI = \
   qt/forms/addressbookpage.ui \
@@ -161,7 +161,7 @@ QT_MOC_CPP = \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp
 
-BITCOIN_MM = \
+PERFECTIONCOIN_MM = \
   qt/macdockiconhandler.mm \
   qt/macnotificationhandler.mm
 
