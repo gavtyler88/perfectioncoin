@@ -1,9 +1,9 @@
-# Copyright (c) 2013-2016 The Bitcoin Core developers
-# Distributed under the MIT software license, see the accompanying
-# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+# The PerfectionCoin developers
+# 
+# file COPYING
 
 bin_PROGRAMS += qt/test/test_bitcoin-qt
-TESTS += qt/test/test_bitcoin-qt
+TESTS += qt/test/test_perfectioncoin-qt
 
 TEST_QT_MOC_CPP = \
   qt/test/moc_compattests.cpp \
@@ -27,37 +27,37 @@ TEST_QT_H = \
   qt/test/paymentservertests.h \
   qt/test/wallettests.h
 
-TEST_BITCOIN_CPP = \
-  test/test_bitcoin.cpp
+TEST_PERFECTIONCOIN_CPP = \
+  test/test_perfectioncoin.cpp
 
-TEST_BITCOIN_H = \
-  test/test_bitcoin.h
+TEST_PERFECTIONCOIN_H = \
+  test/test_perfectioncoin.h
 
-qt_test_test_bitcoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+qt_test_test_perfectioncoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(PERFECTIONCOIN_INCLUDES) $(PERFECTIONCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_TEST_INCLUDES) $(PROTOBUF_CFLAGS)
 
-qt_test_test_bitcoin_qt_SOURCES = \
+qt_test_test_perfectioncoin_qt_SOURCES = \
   qt/test/compattests.cpp \
   qt/test/rpcnestedtests.cpp \
   qt/test/test_main.cpp \
   qt/test/uritests.cpp \
   qt/test/util.cpp \
   $(TEST_QT_H) \
-  $(TEST_BITCOIN_CPP) \
-  $(TEST_BITCOIN_H)
+  $(TEST_PERFECTIONCOIN_CPP) \
+  $(TEST_PERFECTIONCOIN_H)
 if ENABLE_WALLET
-qt_test_test_bitcoin_qt_SOURCES += \
+qt_test_test_perfectioncoin_qt_SOURCES += \
   qt/test/addressbooktests.cpp \
   qt/test/paymentservertests.cpp \
   qt/test/wallettests.cpp \
   wallet/test/wallet_test_fixture.cpp
 endif
 
-nodist_qt_test_test_bitcoin_qt_SOURCES = $(TEST_QT_MOC_CPP)
+nodist_qt_test_test_perfectioncoin_qt_SOURCES = $(TEST_QT_MOC_CPP)
 
-qt_test_test_bitcoin_qt_LDADD = $(LIBBITCOINQT) $(LIBBITCOIN_SERVER)
+qt_test_test_perfectioncoin_qt_LDADD = $(LIBPERFECTIONCOINQT) $(LIBPERFECTIONCOIN_SERVER)
 if ENABLE_WALLET
-qt_test_test_bitcoin_qt_LDADD += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
+qt_test_test_perfectioncoin_qt_LDADD += $(LIBBITCOIN_UTIL) $(LIBPERFECTIONCOIN_WALLET)
 endif
 if ENABLE_ZMQ
 qt_test_test_perfectioncoin_qt_LDADD += $(LIBPERFECTIONCOIN_ZMQ) $(ZMQ_LIBS)
